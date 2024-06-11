@@ -1,0 +1,23 @@
+.setLogin{
+    margin: 0;
+    padding: 0;
+    background-image: url('https://imgs.search.brave.com/jggltgNFUVORKdXUKIiXUTlmo-S3IV-WuZaVwtKpWMk/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9m/cmVzaC12ZWdldGFi/bGVzLXRleHR1cmVk/LWJhY2tncm91bmRf/MjMtMjE0NzY5NDE3/OC5qcGc_c2l6ZT02/MjYmZXh0PWpwZw');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login {
+    background-color: rgba(11, 1, 1, 0.8); /* Adjust opacity here */
+    border-radius: 10px;
+    padding: 20px;
+    width:30rem;
+    box-shadow: 10px 10px 10px rgba(236, 8, 8, 0.2);
+  }
+  
+
+  
