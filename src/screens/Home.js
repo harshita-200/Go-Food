@@ -10,7 +10,7 @@ export default function Home() {
   const [foodItem, setfoodItem] = useState([]);
 
   const loadData = async () => {
-    let response = await fetch("http://127.0.0.1:5000/api/foodData", {
+    let response = await fetch("http://go-food-zeta.vercel.app/api/foodData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
