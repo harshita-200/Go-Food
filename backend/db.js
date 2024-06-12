@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Database connection function
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb://127.0.0.1:27017/gofood", { 
+        await mongoose.connect("mongodb+srv://GoFood:Harshita29*@cluster0.ed3w166.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", { 
             useNewUrlParser: true, 
             useUnifiedTopology: true
         });

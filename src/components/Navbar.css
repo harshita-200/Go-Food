@@ -1,0 +1,20 @@
+/* Navbar.css */
+.navbar .navbar-nav .nav-link {
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+.nav-link:hover {
+    color: #ffcc00; /* Change to your desired hover color */
+    background-color: rgba(255, 255, 255, 0.1); /* Change to your desired hover background color */
+  }
+  
+  .navbar .navbar-brand {
+    transition: color 0.3s ease-in-out;
+  }
+  body{
+    background-color: aqua;
+  }
+  .navbar .navbar-brand:hover {
+    color: #ffcc00;
+    font:200; /* Change to your desired hover color */
+  }
+  
