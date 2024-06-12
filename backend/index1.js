@@ -14,6 +14,7 @@ app.use((req,res,next)=>{
   );
   next();
 })
+app.use(cors());
 app.use(express.json());
 app.use('/api',require("./routes/CreateUser"));
 app.use('/api',require("./routes/DisplayData"));
