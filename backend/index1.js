@@ -1,6 +1,7 @@
 
 const express = require('express');
 const connectDB=require('./db');
+const cors=require('cors');
 const app = express();
 const port = 5000;
 const LogInCollection = require("./db")
