@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors({
-  origin: 'https://go-food-zeta.vercel.app',
+  origin: 'http://localhost:5000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
