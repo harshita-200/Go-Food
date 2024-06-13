@@ -7,7 +7,7 @@ const LogInCollection = require("./db");
 
 // Set up CORS middleware
 app.use(cors({
-  origin: ['https://go-food-front.vercel.app', 'https://go-food-zeta.vercel.app'], // Allow requests from these origins
+  origin: ['https://go-food-zeta.vercel.app/','https://go-food-front.vercel.app/'], // Allow requests from these origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept']
 }));
@@ -21,6 +21,11 @@ app.use('/api', require("./routes/OrderData"));
 app.get('/', (req, res) => {
   res.send('Hello World!')
 }); 
+
+// 404 handler
+app.use((req, res, next) => {
+  res.status(404).json({ message: 'Page Not Found' });
+});
 
 const startServer = async () => {
   await connectDB();
