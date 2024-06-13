@@ -7,7 +7,7 @@ const port = 5000;
 const LogInCollection = require("./db")
 
 app.use((req,res,next)=>{
-  res.setHeader("Access-Control-Allow-Origin","http://localhost:5000");
+  res.setHeader("Access-Control-Allow-Origin","https://go-food-zeta.vercel.app/");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin,X-Requested-With,Content-Type,Accept"
