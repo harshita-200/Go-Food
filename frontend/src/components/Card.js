@@ -22,7 +22,7 @@ export default function Card(props) {
       if (food.size === size) {
         await dispatch({ type: 'UPDATE', id: props.foodItem._id, price: finalPrice, qty: qty });
       } else if (food.size !== size) await dispatch({ type: 'ADD', id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, img: props.foodItem.img, qty: qty, size: size });
-    } else await dispatch({ type: 'ADD', id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, img: props.img, qty: qty, size: size });
+    } else await dispatch({ type: 'ADD', id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, img: props.foodItem.img, qty: qty, size: size });
   };
   let finalPrice = qty * parseInt(options[size]);
 

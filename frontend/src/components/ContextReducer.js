@@ -16,7 +16,7 @@ const reducer = (state, action) => {
           qty: action.qty,
           size: action.size,
           price: action.price,
-          img: action.img || ''
+          img: action.img
 
         }
       ];
