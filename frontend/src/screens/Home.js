@@ -69,7 +69,7 @@ export default function Home() {
           </div>
           <div className="carousel-item">
             <img
-              src="https://imgs.search.brave.com/vxcXKFT32FnQ1o-_4FMz4dzXJmkNRhUnHYQwfcqh59w/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTA0/OTM2OTUzMC9waG90/by9wYXN0cnktcHVm/Zi1pbi1iYWtlcnku/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PVp2WjlfR19nLUt5/VkM4enBJQkpFZFRt/bE9YQXd1M2NoWExl/a0pWUWxUOGs9"
+              src="https://imgs.search.brave.com/B90GooAyWKlKzycoebYh4pXxi7s1OtFxhdqISNMbaIY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNy8w/My8zMC8xNS80Ny9j/aHVycm9zLTIxODg4/NzFfMTI4MC5qcGc"
               className="d-block w-100"
               style={{ filter: "brightness(80%)" }}
               alt="..."
