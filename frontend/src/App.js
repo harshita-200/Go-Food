@@ -13,6 +13,7 @@ import Signup from './screens/Signup';
 import { CartProvider } from './components/ContextReducer.js';
 import MyOrder from './screens/MyOrder';
 import About from './screens/About.js';
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <CartProvider>
