@@ -17,6 +17,10 @@ body('password','Incorrect Password').isLength({min:5})]
   if (!result.isEmpty()) {
     return res.status(400).json({ errors: result.array() });
   }
+    let userExists = await User.findOne({ email: req.body.email });
+    if (userExists) {
+      return res.status(400).json({ errors: [{ msg: "User already exists with this email" }] })
+    }
   const salt = await bcrypt.genSalt(10);
   let secPassword=await bcrypt.hash(req.body.password,salt)
       try {
