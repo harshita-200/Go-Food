@@ -59,6 +59,24 @@ export default function Navbar() {
                   Home
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link active fs-4 mt-2 ms-2"
+                  aria-current="page"
+                  to="/about"
+                  style={{ transition: 'color 0.3s ease-in-out, background-color 0.3s ease-in-out' }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.color = '#ffcc00';
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.color = '';
+                    e.currentTarget.style.backgroundColor = '';
+                  }}
+                >
+                  About Us
+                </Link>
+              </li>
               {localStorage.getItem('authToken') && (
                 <li className="nav-item">
                   <Link
