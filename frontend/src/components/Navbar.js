@@ -26,7 +26,7 @@ export default function Navbar() {
             onMouseOver={(e) => (e.currentTarget.style.color = '#ffcc00')}
             onMouseOut={(e) => (e.currentTarget.style.color = '')}
           >
-            GoFood
+            BiteExpress
           </Link>
           <button
             className="navbar-toggler"
