@@ -17,7 +17,7 @@ export default function Cart() {
   //   dispatch({type:"REMOVE",index:index})
   // }
 
-  const handleCheckOut = async () => {
+  const handleCheckOut = async (e) => {
     let userEmail = localStorage.getItem("userEmail");
     // console.log(data,localStorage.getItem("userEmail"),new Date())
     let response = await fetch("https://go-food-4.onrender.com/api/orderData", {
@@ -37,6 +37,70 @@ export default function Cart() {
     if (response.status === 200) {
       dispatch({ type: "DROP" })
     }
+    const resp = await fetch("https://go-food-4.onrender.com/order", {
+      method: "POST",
+      body: JSON.stringify({
+        amount:500,
+        currency:"INR",
+        receipt: "receiptId",
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const order = await resp.json();
+    console.log(order);
+    var options = {
+      key: "rzp_test_DTCs5mydIhBI8p", // Enter the Key ID generated from the Dashboard
+      amount:500, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      currency:"INR",
+      name: "BiteExpress", //your business name
+      description: "Test Transaction",
+      image: "",
+      order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      handler: async function (response) {
+        const body = {
+          ...response,
+        };
+
+        const validateRes = await fetch(
+          "https://go-food-4.onrender.com/order/validate",
+          {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const jsonRes = await validateRes.json();
+        console.log(jsonRes);
+      },
+      prefill: {
+        //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+        name: "Web Dev Matrix", //your customer's name
+        email: "webdevmatrix@example.com",
+        contact: "9000000000", //Provide the customer's phone number for better conversion rates
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    var rzp1 = new window.Razorpay(options);
+    rzp1.on("payment.failed", function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+    rzp1.open();
+    e.preventDefault();
   }
 
   let totalPrice = data.reduce((total, food) => total + food.price, 0)

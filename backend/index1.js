@@ -1,18 +1,40 @@
 const express = require('express');
 const connectDB = require('./db');
 const cors = require('cors');
+const Razorpay=require('razorpay');
 const app = express();
 const port = 5000;
 const LogInCollection = require("./db");
 
+
 // Set up CORS middleware
 app.use(cors({
-  origin: ['https://go-food-front-rosy.vercel.app'], // Allow requests from these origins
+  origin: ['http://localhost:3000','https://go-food-front-rosy.vercel.app'], // Allow requests from these origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept']
 }));
-
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.post("/order", async (req, res) => {
+  try {
+    const razorpay = new Razorpay({
+      key_id:'rzp_test_DTCs5mydIhBI8p',
+      key_secret:'W2bREnCs1QKq1MhEJl9f95HV',
+    });
+
+    const options = req.body;
+    const order = await razorpay.orders.create(options);
+
+    if (!order) {
+      return res.status(500).send("Error");
+    }
+
+    res.json(order);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error");
+  }
+});
 
 app.use('/api', require("./routes/CreateUser"));
 app.use('/api', require("./routes/DisplayData"));
