@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
         <div className="container-fluid">
           <Link
             className="navbar-brand fs-1 fst-italic"
