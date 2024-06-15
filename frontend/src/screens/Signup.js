@@ -25,7 +25,7 @@ export default function Signup() {
               alert("Enter Valid Credentials");
             }
             if(json.success)
-                navigate("/");
+                navigate("/login");
     }
 
     const onchange=(event)=>{
