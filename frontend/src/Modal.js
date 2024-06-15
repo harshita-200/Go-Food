@@ -11,7 +11,8 @@ const MODAL_STYLES = {
   height: '80%',
   width: '80%',
   opacity: '0.8',
-  overflowY: 'auto',  // Make the modal content scrollable
+  overflowY: 'auto', // Enable vertical scrolling
+  overflowX: 'hidden', // Disable horizontal scrolling
   WebkitOverflowScrolling: 'touch' // Smooth scrolling on iOS
 };
 
@@ -25,14 +26,25 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
+const CLOSE_BUTTON_STYLES = {
+  position: 'absolute',
+  top: '10px',
+  right: '10px',
+  backgroundColor: 'red',
+  color: 'white',
+  border: 'none',
+  fontSize: '16px',
+  cursor: 'pointer',
+  padding: '5px 10px'
+};
+
 export default function Modal({ children, onClose }) {
   return ReactDOM.createPortal(
     <>
       <div style={OVERLAY_STYLES} onClick={onClose} />
       <div style={MODAL_STYLES}>
         <button
-          className='btn bg-danger fs-4'
-          style={{ marginLeft: "90%", marginTop: "-35px" }}
+          style={CLOSE_BUTTON_STYLES}
           onClick={onClose}
         >
           X
