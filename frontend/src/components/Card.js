@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatchCart, useCart } from "./ContextReducer";
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer, Bounce } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for react-toastify
 
 export default function Card(props) {
   let dispatch = useDispatchCart();
@@ -19,6 +20,8 @@ export default function Card(props) {
         break;
       }
     }
+    let finalPrice = qty * parseInt(options[size]);
+
     if (food !== "") {
       if (food.size === size) {
         await dispatch({
@@ -27,7 +30,7 @@ export default function Card(props) {
           price: finalPrice,
           qty: qty,
         });
-      } else if (food.size !== size)
+      } else {
         await dispatch({
           type: "ADD",
           id: props.foodItem._id,
@@ -37,18 +40,8 @@ export default function Card(props) {
           qty: qty,
           size: size,
         });
-      toast.success("Item added successfully", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
-      });
-    } else
+      }
+    } else {
       await dispatch({
         type: "ADD",
         id: props.foodItem._id,
@@ -58,8 +51,20 @@ export default function Card(props) {
         qty: qty,
         size: size,
       });
+    }
+
+    toast.success("Item added successfully", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
   };
-  let finalPrice = qty * parseInt(options[size]);
 
   useEffect(() => {
     setSize(priceref.current.value);
@@ -110,7 +115,7 @@ export default function Card(props) {
                 );
               })}
             </select>
-            <div className="d-inline h-100 fs-5">₹{finalPrice}/-</div>
+            <div className="d-inline h-100 fs-5">₹{qty * parseInt(options[size])}/-</div>
           </div>
           <hr />
           <button
@@ -119,21 +124,21 @@ export default function Card(props) {
           >
             Add to Cart
           </button>
-          <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-            transition:Bounce
-          />
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
     </div>
   );
 }
