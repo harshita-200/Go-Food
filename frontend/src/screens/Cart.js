@@ -1,13 +1,11 @@
 import React from 'react';
 import { FaTrashAlt } from "react-icons/fa";
 import { useCart, useDispatchCart } from '../components/ContextReducer';
-import { useHistory } from 'react-router-dom';
 
 export default function Cart() {
   let data = useCart();
   let dispatch = useDispatchCart();
-  let history = useHistory();
-
+ 
   if (data.length === 0) {
     return (
       <div>
@@ -72,7 +70,6 @@ export default function Cart() {
 
           if (jsonRes.msg === 'success') {
             dispatch({ type: "DROP" });
-            history.push("/myorders");
           } else {
             alert("Payment validation failed");
           }
