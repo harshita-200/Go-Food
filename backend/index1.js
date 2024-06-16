@@ -9,7 +9,7 @@ const port = 5000;
 // Set up CORS middleware
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://go-food-front-rosy.vercel.app"],
+    origin: ["http://localhost:3000", "https://go-food-front-rosy.vercel.app","https://api.razorpay.com"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
   })
