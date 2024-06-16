@@ -5,11 +5,10 @@ const Razorpay = require('razorpay');
 const crypto = require('crypto');
 const app = express();
 const port = 5000;
-const LogInCollection = require("./db");
 
 // Set up CORS middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://go-food-front-rosy.vercel.app'], // Allow requests from these origins
+  origin: ['http://localhost:3000', 'https://go-food-front-rosy.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept']
 }));
@@ -17,13 +16,13 @@ app.use(cors({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+const razorpay = new Razorpay({
+  key_id: 'rzp_test_DTCs5mydIhBI8p',
+  key_secret: 'W2bREnCs1QKq1MhEJl9f95HV',
+});
+
 app.post("/order", async (req, res) => {
   try {
-    const razorpay = new Razorpay({
-      key_id: 'rzp_test_DTCs5mydIhBI8p',
-      key_secret: 'W2bREnCs1QKq1MhEJl9f95HV',
-    });
-
     const options = req.body;
     const order = await razorpay.orders.create(options);
 
@@ -56,15 +55,13 @@ app.post('/order/validate', async (req, res) => {
   });
 });
 
-// Use API routes
 app.use('/api', require("./routes/CreateUser"));
 app.use('/api', require("./routes/DisplayData"));
 app.use('/api', require("./routes/OrderData"));
 
-// Default route
 app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+  res.send('Hello World!')
+}); 
 
 // 404 handler
 app.use((req, res, next) => {
@@ -76,6 +73,6 @@ const startServer = async () => {
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
   });
-};
+}
 
 startServer();

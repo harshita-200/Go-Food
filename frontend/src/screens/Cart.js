@@ -90,13 +90,7 @@ export default function Cart() {
 
       var rzp1 = new window.Razorpay(options);
       rzp1.on("payment.failed", function (response) {
-        alert(response.error.code);
         alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
       });
       rzp1.open();
     } else {

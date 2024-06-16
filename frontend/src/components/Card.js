@@ -11,7 +11,6 @@ export default function Card(props) {
   let priceOptions = Object.keys(options);
   const [qty, setQty] = useState(1);
   const [size, setSize] = useState("");
-
   const handleonClick = async () => {
     let food = "";
     for (const item of data) {
@@ -21,7 +20,7 @@ export default function Card(props) {
       }
     }
     let finalPrice = qty * parseInt(options[size]);
-
+     
     if (food !== "") {
       if (food.size === size) {
         await dispatch({
@@ -121,7 +120,7 @@ export default function Card(props) {
           <button
             className="btn btn-danger justify-center ms-2"
             onClick={handleonClick}
-          >
+          disabled={!localStorage.getItem('authtoken')}>
             Add to Cart
           </button>
         </div>
