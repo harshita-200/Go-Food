@@ -54,7 +54,7 @@ export default function Cart() {
         name: "BiteExpress", // your business name
         description: "Test Transaction",
         image: "",
-        order_id: order.id, // This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        order_id: order.id, // This is a sample Order ID. Pass the id obtained in the response of Step 1
         handler: async function (resp) {
           const body = { ...resp };
           console.log(resp);
@@ -67,7 +67,7 @@ export default function Cart() {
           });
           const jsonRes = await validateRes.json();
           console.log(jsonRes);
-
+      
           if (jsonRes.msg === 'success') {
             dispatch({ type: "DROP" });
           } else {
@@ -87,15 +87,15 @@ export default function Cart() {
           color: "#3399cc",
         },
       };
-
+      
       var rzp1 = new window.Razorpay(options);
       rzp1.on("payment.failed", function (response) {
         alert(response.error.description);
       });
       rzp1.open();
-    } else {
-      console.error("Failed to place order", response.statusText);
-    }
+      } else {
+        console.error("Failed to place order", response.statusText);
+      }      
   };
 
   let totalPrice = data.reduce((total, food) => total + food.price, 0);
