@@ -1,11 +1,12 @@
 import React from 'react';
-//import Delete from '@material-ui/icons/Delete'
 import { FaTrashAlt } from "react-icons/fa";
 import { useCart, useDispatchCart } from '../components/ContextReducer';
+import { useHistory } from 'react-router-dom';
 
 export default function Cart() {
   let data = useCart();
   let dispatch = useDispatchCart();
+  let history = useHistory();
 
   if (data.length === 0) {
     return (
@@ -36,7 +37,7 @@ export default function Cart() {
       const resp = await fetch("https://go-food-12.onrender.com/order", {
         method: "POST",
         body: JSON.stringify({
-          amount: totalPrice, // Amount is in currency subunits, so convert to paise
+          amount: totalPrice * 100, // Amount is in currency subunits, so convert to paise
           currency: "INR",
           receipt: "receiptId",
         }),
@@ -47,10 +48,10 @@ export default function Cart() {
 
       const order = await resp.json();
       console.log(order);
-      
+
       var options = {
         key: "rzp_test_DTCs5mydIhBI8p", // Enter the Key ID generated from the Dashboard
-        amount: totalPrice, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        amount: totalPrice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "BiteExpress", // your business name
         description: "Test Transaction",
@@ -69,8 +70,11 @@ export default function Cart() {
           const jsonRes = await validateRes.json();
           console.log(jsonRes);
 
-          if (jsonRes.status === 'success') {
+          if (jsonRes.msg === 'success') {
             dispatch({ type: "DROP" });
+            history.push("/myorders");
+          } else {
+            alert("Payment validation failed");
           }
         },
         prefill: {
