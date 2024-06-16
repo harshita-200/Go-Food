@@ -30,10 +30,10 @@ export default function MyOrder() {
   useEffect(() => {
     fetchMyOrder();
   }, []);
-  if (orderData.length === 0) {
+  if (!orderData || orderData.length === 0) {
     return (
       <div>
-        <div className='m-5 w-100 text-center fs-3'>Your Cart is Empty!!</div>
+        <div className='m-5 w-100 text-center fs-3'>No order placed yet!!</div>
       </div>
     )
   }

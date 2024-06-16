@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link,useNavigate} from 'react-router-dom';
 import './Signup.css';
 import { toast, ToastContainer, Bounce } from "react-toastify";
-
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for react-toastify
 export default function Signup() {
          const [credentials, setCredentials] = useState({name:"",email:"",password:"",location:""})
          let navigate=useNavigate();
