@@ -9,7 +9,7 @@ export default function Signup() {
 
     const handleSubmit=async (e)=>{
           e.preventDefault();
-          const response=await fetch("https://go-food-4.onrender.com/api/createuser",{
+          const response=await fetch("https://go-food-12.onrender.com/api/createuser",{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
