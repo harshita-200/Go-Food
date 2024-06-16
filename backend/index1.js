@@ -35,7 +35,20 @@ app.post("/order", async (req, res) => {
     res.status(500).send("Error");
   }
 });
-
+app.post('/order/validate',async(req,res)=>{
+  const {razorpay_order_id,razorpay_payment_id,razorpay_signature}=req.body;
+  
+  const sha=crypto.createname("sha256",W2bREnCs1QKq1MhEJl9f95HV);
+  sha.update(`${razorpay_order_id} | ${razorpay_payment_id}`);
+  const digest=sha.digest("hex");
+  if(digest!==razorpay_signature)
+    return res.status(400).json({msg:"Transaction Failed"});
+  res.json({
+       msg:"success",
+       orderId:razorpay_order_id,
+       paymentId:razorpay_payment_id
+  });
+});
 app.use('/api', require("./routes/CreateUser"));
 app.use('/api', require("./routes/DisplayData"));
 app.use('/api', require("./routes/OrderData"));

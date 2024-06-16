@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link,useNavigate} from 'react-router-dom';
 import './Signup.css';
+import { toast, ToastContainer, Bounce } from "react-toastify";
+
 export default function Signup() {
          const [credentials, setCredentials] = useState({name:"",email:"",password:"",location:""})
          let navigate=useNavigate();
@@ -25,7 +27,20 @@ export default function Signup() {
               alert("Enter Valid Credentials");
             }
             if(json.success)
-                navigate("/login");
+             {
+              toast.success("Registered successfully", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+              });
+                 navigate("/login");
+            }
     }
 
     const onchange=(event)=>{
@@ -56,6 +71,19 @@ export default function Signup() {
   <Link to="/login" className="m-3 btn btn-danger">Already a User</Link>
 </form>
 </div>
+<ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
     </div>
   )
 }
