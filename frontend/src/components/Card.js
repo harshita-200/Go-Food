@@ -120,7 +120,7 @@ export default function Card(props) {
           <button
             className="btn btn-danger justify-center ms-2"
             onClick={handleonClick}
-          disabled={!localStorage.getItem('authtoken')}>
+          disabled={!localStorage.getItem('authToken')}>
             Add to Cart
           </button>
         </div>
