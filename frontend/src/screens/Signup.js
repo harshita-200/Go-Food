@@ -39,7 +39,9 @@ export default function Signup() {
                 theme: "dark",
                 transition: Bounce,
               });
-                 navigate("/login");
+              setTimeout(() => {
+                navigate("/login");
+              }, 2000); 
             }
     }
 

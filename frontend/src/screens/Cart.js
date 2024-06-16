@@ -72,6 +72,7 @@ export default function Cart() {
             dispatch({ type: "DROP" });
           } else {
             alert("Payment validation failed");
+            dispatch({ type: "DROP" });
           }
         },
         prefill: {
