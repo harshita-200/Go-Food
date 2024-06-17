@@ -27,7 +27,7 @@ export default function Home() {
 
   return (
     <div style={{ backgroundColor: "black" }}>
-      <div>
+      <div style={{zIndex:1}}>
         <Navbar />
       </div>
       <div

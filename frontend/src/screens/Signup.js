@@ -51,7 +51,8 @@ export default function Signup() {
     }
   return (
     <>
-    <div> <Navbar/></div>
+    <div style={{zIndex:1}}>
+     <Navbar/></div>
    
     <div  className="setLogin">
     <div className="container login" style={{width:'30rem'}}>
