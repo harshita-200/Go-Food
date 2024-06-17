@@ -1,15 +1,22 @@
-.setLogin{
-    margin: 0;
-    padding: 0;
-    background-image: url('https://imgs.search.brave.com/jggltgNFUVORKdXUKIiXUTlmo-S3IV-WuZaVwtKpWMk/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9m/cmVzaC12ZWdldGFi/bGVzLXRleHR1cmVk/LWJhY2tncm91bmRf/MjMtMjE0NzY5NDE3/OC5qcGc_c2l6ZT02/MjYmZXh0PWpwZw');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.setLogin {
+  margin: 0;
+  padding: 0;
+  background-image: url('http://live.staticflickr.com/2912/33261917251_5739a3a9c0_b.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .setLogin {
+    background-position: top;
   }
+}
   
   .login {
     background-color: rgba(11, 1, 1, 0.8); /* Adjust opacity here */

@@ -49,9 +49,13 @@ export default function Signup() {
         setCredentials({...credentials,[event.target.name]:event.target.value});
     }
   return (
+    <>
+    <div> <Navbar/></div>
+   
     <div  className="setLogin">
     <div className="container login" style={{width:'30rem'}}>
       <form onSubmit={handleSubmit}>
+      <h2 className="mb-3">Sign Up</h2>
       <div className="mb-3">
     <label htmlFor="name" className="form-label">Name</label>
     <input type="text" className="form-control" name='name' value={credentials.name} onChange={onchange}/>
@@ -69,7 +73,7 @@ export default function Signup() {
     <label htmlFor="exampleInputPassword1" className="form-label">Location</label>
     <input type="text" className="form-control" name='location' value={credentials.location} onChange={onchange} id="exampleInputPassword1"/>
   </div>
-  <button type="submit" className="m-3 btn btn-success">Submit</button>
+  <button type="submit" className="m-3 btn btn-success">Sign Up</button>
   <Link to="/login" className="m-3 btn btn-danger">Already a User</Link>
 </form>
 </div>
@@ -87,5 +91,6 @@ export default function Signup() {
         transition={Bounce}
       />
     </div>
+    </>
   )
 }

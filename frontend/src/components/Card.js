@@ -11,24 +11,37 @@ export default function Card(props) {
   let priceOptions = Object.keys(options);
   const [qty, setQty] = useState(1);
   const [size, setSize] = useState("");
+  
   const handleonClick = async () => {
-    let food = "";
-    for (const item of data) {
-      if (item.id === props.foodItem._id) {
-        food = item;
-        break;
+    if (localStorage.getItem('authToken')) {
+      let food = "";
+      for (const item of data) {
+        if (item.id === props.foodItem._id) {
+          food = item;
+          break;
+        }
       }
-    }
-    let finalPrice = qty * parseInt(options[size]);
-     
-    if (food !== "") {
-      if (food.size === size) {
-        await dispatch({
-          type: "UPDATE",
-          id: props.foodItem._id,
-          price: finalPrice,
-          qty: qty,
-        });
+      let finalPrice = qty * parseInt(options[size]);
+      
+      if (food !== "") {
+        if (food.size === size) {
+          await dispatch({
+            type: "UPDATE",
+            id: props.foodItem._id,
+            price: finalPrice,
+            qty: qty,
+          });
+        } else {
+          await dispatch({
+            type: "ADD",
+            id: props.foodItem._id,
+            name: props.foodItem.name,
+            price: finalPrice,
+            img: props.foodItem.img,
+            qty: qty,
+            size: size,
+          });
+        }
       } else {
         await dispatch({
           type: "ADD",
@@ -40,29 +53,31 @@ export default function Card(props) {
           size: size,
         });
       }
+
+      toast.success("Item added successfully", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
     } else {
-      await dispatch({
-        type: "ADD",
-        id: props.foodItem._id,
-        name: props.foodItem.name,
-        price: finalPrice,
-        img: props.foodItem.img,
-        qty: qty,
-        size: size,
+      toast.info('Login to add items to your cart', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
       });
     }
-
-    toast.success("Item added successfully", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Bounce,
-    });
   };
 
   useEffect(() => {
@@ -119,8 +134,7 @@ export default function Card(props) {
           <hr />
           <button
             className="btn btn-danger justify-center ms-2"
-            onClick={handleonClick}
-          disabled={!localStorage.getItem('authToken')}>
+            onClick={handleonClick}>
             Add to Cart
           </button>
         </div>

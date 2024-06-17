@@ -46,7 +46,7 @@ export default function Cart() {
 
       const order = await resp.json();
       console.log(order);
-
+      dispatch({ type: "DROP" });
       var options = {
         key: "rzp_test_DTCs5mydIhBI8p", // Enter the Key ID generated from the Dashboard
         amount: totalPrice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise

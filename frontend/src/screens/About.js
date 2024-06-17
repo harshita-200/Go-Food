@@ -12,8 +12,7 @@ const contentStyle = {
   flex: 1, // Grow to fill available space
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
-  fontSize: '1.5rem', // Increase font size
+  alignItems: 'center', // Increase font size
   textAlign: 'center', // Center align text
   transition: 'all 0.5s ease', // Add transition effect
 };
