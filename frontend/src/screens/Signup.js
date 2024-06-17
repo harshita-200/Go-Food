@@ -3,6 +3,7 @@ import { Link,useNavigate} from 'react-router-dom';
 import './Signup.css';
 import { toast, ToastContainer, Bounce } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'; // Import CSS for react-toastify
+import Navbar from '../components/Navbar';
 export default function Signup() {
          const [credentials, setCredentials] = useState({name:"",email:"",password:"",location:""})
          let navigate=useNavigate();
