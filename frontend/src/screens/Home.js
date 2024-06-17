@@ -147,7 +147,7 @@ export default function Home() {
         <Footer />
       </div>
       <style jsx>{`
-        .carousel-img {
+        .carousel-inner {
           filter: brightness(80%);
           object-fit: cover;
         }
