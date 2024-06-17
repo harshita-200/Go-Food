@@ -153,7 +153,7 @@ export default function Home() {
         }
 
         .carousel-item {
-          height: 400px; /* Default height for larger screens */
+          height: 500px; /* Default height for larger screens */
         }
 
         @media (max-width: 767px) {
