@@ -56,7 +56,7 @@ export default function Home() {
           <div className="carousel-item active">
             <img
               src="http://live.staticflickr.com/7911/47462192331_0af7693a88_b.jpg"
-              className="d-block w-100"
+              className="d-block w-100 carousel-img"
               style={{ filter: "brightness(80%)", objectFit: "cover"}}
               alt="..."
             />
@@ -65,7 +65,7 @@ export default function Home() {
           <div className="carousel-item">
             <img
               src="https://media.istockphoto.com/id/184946701/photo/pizza.jpg?s=612x612&w=0&k=20&c=97rc0VIi-s3mn4xe4xDy9S-XJ_Ohbn92XaEMaiID_eY="
-              className="d-block w-100"
+              className="d-block w-100 carousel-img"
               style={{ filter: "brightness(80%)", objectFit: "cover"}}
               alt="..."
             />
@@ -73,7 +73,7 @@ export default function Home() {
           <div className="carousel-item">
             <img
               src="https://live.staticflickr.com/4745/38718537835_584882a2ed_h.jpg"
-              className="d-block w-100"
+              className="d-block w-100 carousel-img"
               style={{ filter: "brightness(80%)", objectFit: "cover"}}
               alt="..."
             />
@@ -147,20 +147,18 @@ export default function Home() {
         <Footer />
       </div>
       <style jsx>{`
-        .carousel-inner {
+        .carousel-img {
           filter: brightness(80%);
           object-fit: cover;
         }
 
-        @media (min-width: 768px) {
-          .carousel-img {
-            height: 500px;
-          }
+        .carousel-item {
+          height: 400px; /* Default height for larger screens */
         }
 
         @media (max-width: 767px) {
-          .carousel-img {
-            height: 220px;
+          .carousel-item {
+            height: 220px; /* Height for smaller screens */
           }
         }
       `}</style>
