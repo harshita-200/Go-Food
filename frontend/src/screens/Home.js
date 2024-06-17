@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
-import Carousel from "../components/Carousel";
 export default function Home() {
   const [search, setSearch] = useState("");
   const [foodCat, setfoodCat] = useState([]);
@@ -147,6 +146,24 @@ export default function Home() {
       <div>
         <Footer />
       </div>
+      <style jsx>{`
+        .carousel-img {
+          filter: brightness(80%);
+          object-fit: cover;
+        }
+
+        @media (min-width: 768px) {
+          .carousel-img {
+            height: 500px;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .carousel-img {
+            height: 220px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
